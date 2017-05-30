@@ -38,6 +38,16 @@ module.exports = function Model (Entity) {
     })
   }
 
+
+  function remove (query) {
+    return new Promise((resolve, reject) => {
+      return Entity.remove(query, (err, response) => {
+        if (err) return reject(err)
+        return resolve(response)
+      })
+    })
+  }
+
   function buy (query, payload) {
     return new Promise((resolve, reject) => {
       return findOne(query)
@@ -66,6 +76,8 @@ module.exports = function Model (Entity) {
     create,
     findOne,
     findAll,
+    update,
+    remove,
     buy
   }
 }

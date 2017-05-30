@@ -16,6 +16,21 @@ module.exports = function Handler (Model) {
       .catch(err => reply(Boom.badRequest(err)))
   }
 
+  function UpdateHandler (request, reply) {
+    const query = { _id: request.params.id }
+    const payload = { $set: request.payload }
+    Model.update(query, payload)
+      .then(response => reply(response).code(200))
+      .catch(err => reply(Boom.badRequest(err)))
+  }
+
+  function DeleteHandler (request, reply) {
+    const query = { _id: request.params.id }
+    Model.remove(query)
+      .then(response => reply(response).code(200))
+      .catch(err => reply(Boom.badRequest(err)))
+  }
+
   function BuyHandler (request, reply) {
     const query = { _id: request.params.id }
     const payload = request.payload || {}
@@ -28,6 +43,8 @@ module.exports = function Handler (Model) {
   return {
     CreateHandler,
     SelectHandler,
+    UpdateHandler,
+    DeleteHandler,
     BuyHandler
   }
 }

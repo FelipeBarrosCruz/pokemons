@@ -25,6 +25,25 @@ module.exports = [{
     validate: Validate.CreateValidate
   }
 }, {
+  method: 'PUT',
+  path: `${BASE_PATH}/{id}`,
+  config: {
+    tags: ['api'],
+    description: 'Update the pokemon',
+    notes: 'Returns 200 with confirmation',
+    handler: Handler.UpdateHandler,
+    validate: Validate.UpdateValidate
+  }
+}, {
+  method: 'DELETE',
+  path: `${BASE_PATH}/{id}`,
+  config: {
+    tags: ['api'],
+    description: 'Delete the pokemon',
+    notes: 'Returns 200 with confirmation',
+    handler: Handler.DeleteHandler
+  }
+}, {
   method: 'POST',
   path: `${BASE_PATH}/{id}/buy`,
   config: {

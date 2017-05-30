@@ -2,12 +2,28 @@ const Joi = require('joi')
 
 const CreateValidate = {
   payload: {
+    _id: Joi.string()
+      .optional()
+      .description('the mongo ObjectId of pokemon'),
+
     name: Joi.string()
       .required()
       .description('the name of pokemon'),
 
     price: Joi.number()
       .required()
+      .description('the price of pokemon'),
+
+    stock: Joi.number()
+      .optional()
+      .description('the stock of pokemon')
+  }
+}
+
+const UpdateValidate = {
+  payload: {
+    price: Joi.number()
+      .optional()
       .description('the price of pokemon'),
 
     stock: Joi.number()
@@ -56,5 +72,6 @@ const BuyValidate = {
 
 module.exports = {
   CreateValidate,
+  UpdateValidate,
   BuyValidate
 }
