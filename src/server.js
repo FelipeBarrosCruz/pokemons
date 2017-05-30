@@ -3,6 +3,7 @@ const HapiRouter = require('hapi-router')
 const Inert = require('inert')
 const Vision = require('vision')
 const HapiSwagger = require('hapi-swagger')
+const Logger = require('../lib/logger')
 const Server = new Hapi.Server()
 
 module.exports = function ServerWrapper(environment) {
@@ -35,10 +36,10 @@ module.exports = function ServerWrapper(environment) {
 
     Server.start((err) => {
       if (err) {
-        console.error('Server error', err)
+        Logger.error('Server error', err)
         return reject(err)
       }
-      console.info(`Server running on [${environment.server.port}] port`)
+      Logger.info(`Server running on [${environment.server.port}] port`)
       return resolve(Server)
     })
   })
