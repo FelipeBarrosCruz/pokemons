@@ -1,0 +1,43 @@
+{
+  "name": "pokemon",
+  "version": "1.0.0",
+  "description": "Example of a really bad code",
+  "main": "idnex.js",
+  "scripts": {
+    "start": "nodemon --watch",
+    "test": "NODE_ENV=testing mocha test --timeout 60000 --reporter spec"
+  },
+  "author": "FelipeBarrosCruz<felipe.barros.pt@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "boom": "^5.1.0",
+    "hapi": "^16.1.1",
+    "hapi-router": "^3.5.0",
+    "joi": "^10.5.1",
+    "lodash": "^4.17.4",
+    "mongoose": "^4.10.3",
+    "slug": "^0.9.1"
+  },
+  "devDependencies": {
+    "chai": "^4.0.0",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb-base": "^11.2.0",
+    "eslint-plugin-import": "^2.3.0",
+    "eslint-plugin-mocha": "^4.9.0",
+    "mocha": "^3.4.2",
+    "nodemon": "^1.11.0",
+    "qs": "^6.4.0"
+  },
+  "standard": {
+    "globals": [
+      "describe",
+      "context",
+      "before",
+      "beforeEach",
+      "after",
+      "afterEach",
+      "it",
+      "expect"
+    ]
+  }
+}
