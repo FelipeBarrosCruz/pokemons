@@ -1,5 +1,8 @@
 const Hapi = require('hapi')
 const HapiRouter = require('hapi-router')
+const Inert = require('inert')
+const Vision = require('vision')
+const HapiSwagger = require('hapi-swagger')
 const Server = new Hapi.Server()
 
 module.exports = function ServerWrapper(environment) {
@@ -12,7 +15,22 @@ module.exports = function ServerWrapper(environment) {
         routes: `${environment.router}`
       }
     }, (err) => {
-      if (err) reject(err)
+      if (err) throw err
+    })
+
+    Server.register([
+      Inert,
+      Vision, {
+        register: HapiSwagger,
+        options: {
+          info: {
+            title: 'Pokemon API',
+            version: '0.0.1'
+          },
+          debug: true
+        }
+      }], (err) => {
+      if (err) throw err
     })
 
     Server.start((err) => {
