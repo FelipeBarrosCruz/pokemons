@@ -10,7 +10,9 @@ const DEFAULT_OPTIONS = {
 function buildRequest (data) {
   const options = _.clone(DEFAULT_OPTIONS)
   if (data.path) {
-    options.url = options.url.concat(data.path)
+    options.url = Array.isArray(data.path)
+                ? options.url.concat(`/${data.path.join('/')}`)
+                : options.url.concat(data.path)
   }
   if (data.query) {
     options.url = options.url.concat(`?${QueryString.stringify(data.query)}`)
