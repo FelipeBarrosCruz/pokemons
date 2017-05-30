@@ -35,6 +35,12 @@
 ### To start the application
     npm run start
 
+## Check the API documentation
+  ```http://127.0.0.1:3000/documentation```
+
+
+  ```BASE_URL:PORT/documentation```
+
 ## On this project we use:
 
 - HapiJS Packages
