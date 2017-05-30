@@ -25,6 +25,7 @@ const deleteMock = {
 const buyMock = {
   _id: ObjectId('592d9c8cb9128d7095657239'),
   payload: {
+    quantity: 2,
     card: {
       card_number: '4024007138010896',
       card_expiration_date: '1050',

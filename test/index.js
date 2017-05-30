@@ -65,6 +65,19 @@ describe('Test Pokemon Module', () => {
       }).catch(err => done(err))
   })
 
+  it ('Shoud buy a pokemon', (done) => {
+    const request = Helper.buildRequest({
+      method: 'POST',
+      path: ['pokemons', Mock.buyMock._id, 'buy'],
+      payload: Mock.buyMock.payload
+    })
+    this.server.inject(request)
+      .then((response) => {
+        response.statusCode.should.equal(200)
+        done()
+      }).catch(err => done(err))
+  })
+
   it ('Shoud remove a pokemon', (done) => {
     const request = Helper.buildRequest({
       method: 'DELETE',
